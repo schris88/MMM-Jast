@@ -1,11 +1,32 @@
 {% macro render() %}
   <style type="text/css">
-    .jast-wrapper.horizontal ul.jast-tickerframe {
+    .jast-wrapper.horizontal {
+      overflow: hidden;
+    }
+
+    .jast-wrapper.horizontal .ticker-band-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .jast-wrapper.horizontal .ticker {
+      display: flex;
+      width: 100%;
+    }
+
+    .jast-wrapper.horizontal .ticker-list {
+      display: flex;
       animation: tickerh {{ config.fadeSpeedInSeconds }}s linear infinite;
     }
 
-    .jast-wrapper.horizontal .jast-ticker-no2 ul.jast-tickerframe {
-      animation-delay: -{{ config.fadeSpeedInSeconds / 2 }}s;
+    @keyframes tickerh {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
   </style>
 {% endmacro %}
+

@@ -2,11 +2,14 @@
 {% import "templates/HorizontalScrollStyle.njk" as hss with context %}
 {% macro render(num="1") %}
   {{ hss.render() }}
-  <span class="jast-hticker jast-ticker-no{{ num }}" >
-    <ul class="jast-tickerframe">
-    {% for i in range(0, config.virtualHorizontalMultiplier) -%}
-      {{ stockList.render() }}
-    {% endfor %}
-    </ul>
-  </span>
+  <div class="ticker-band-wrapper">
+    <div class="ticker">
+      <div class="ticker-list">
+        {% for i in range(0, config.virtualHorizontalMultiplier) -%}
+          {{ stockList.render() }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 {% endmacro %}
+
